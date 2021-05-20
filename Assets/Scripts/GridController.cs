@@ -10,6 +10,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private string wallTag = "Wall";
     [SerializeField] private Transform Player;
     [SerializeField] private Transform Dalek;
+    public Vector3 targetPos;
+    private string gridMap;
     
     
     // Start is called before the first frame update
@@ -28,9 +30,11 @@ public class GridController : MonoBehaviour
         {
             if (child.CompareTag(wallTag))
             {
-                var wallX = (int)(child.transform.position.x - 2.5)/5;
-                var wallY = (int)(child.transform.position.z - 2.5)/5;
+                var wallX = (int)(child.transform.position.x + 12.5)/5;
+                var wallY = (int)(child.transform.position.z + 12.5)/5;
+                Debug.Log($"Wall position at {child.transform.position.x}, {child.transform.position.x}");
                 astargrid.walls.Add(new Location(wallX, wallY));
+                Debug.Log($"Wall added at {wallX}, {wallY}");
             }
         }
         
@@ -40,14 +44,65 @@ public class GridController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        /*         
          get positions of Player & Dalek
          find their grid squares, convert to A* grid position
          pass in to A* the dalek co-ords as start position and player co-ords as destination
-         
+         take the co-ords of the first step from A* & pass it in to the dalek controller as the next location
         */
+        var astarXPosDalek = (int) (Dalek.position.x + 15) / 5;
+        var astarYPosDalek = (int) (Dalek.position.z + 15) / 5;
+        var astarXPosPlayer = (int) (Player.position.x + 15) / 5;
+        var astarYPosPlayer = (int) (Player.position.z + 15) / 5;
+        // Debug.Log($"Dalek A* position: x {astarXPosDalek}, y {astarYPosDalek} \n Player A* position: x {astarXPosPlayer}, y {astarYPosPlayer}");
+        var nextStep = new AStarSearch(astargrid, new Location(astarXPosPlayer, astarYPosPlayer), new Location(astarXPosDalek, astarYPosDalek));
+        //Location playerLocation = new Location(astarXPosPlayer, astarYPosPlayer);
+        Location dalekLocation = new Location(astarXPosDalek, astarYPosDalek);
+
+        Location pointer = dalekLocation;
+        if (!nextStep.cameFrom.TryGetValue(dalekLocation, out pointer))
+        {
+            pointer = dalekLocation;
+        }
+
+        if (astargrid.walls.Contains(dalekLocation)){}
+        else if (pointer.x == astarXPosDalek + 1) {targetPos.x = (float) (pointer.x * 5 - 12.5);}
+        else if (pointer.x == astarXPosDalek - 1) {targetPos.x = (float) (pointer.x * 5 - 12.5);}
+        else if (pointer.y == astarYPosDalek + 1) {targetPos.z = (float) (pointer.y * 5 - 12.5);}
+        else if (pointer.y == astarYPosDalek - 1) {targetPos.z = (float) (pointer.y * 5 - 12.5);}
+        targetPos = new Vector3(targetPos.x, 1, targetPos.z);
+        //Debug.Log($"Dalek location: {dalekLocation.x}, {dalekLocation.y} \n pointer: {pointer.x}, {pointer.y}");
+        //Debug.Log($"Player location: {playerLocation.x}, {playerLocation.y} \n pointer: {pointer.x}, {pointer.y}");
+
+        //Debug.Log($"Target position: {targetPos}");
+        /*
+        for (var y = 0; y < 6; y++)
+        {
+            for (var x = 0; x < 6; x++)
+            {
+                Location id = new Location(x, y);
+                Location ptr = id;
+                
+                if (!nextStep.cameFrom.TryGetValue(id, out ptr))
+                {
+                    ptr = id;
+                }
+                if (astargrid.walls.Contains(id)) { gridMap += "##"; }
+                else if (ptr.x == x + 1) { gridMap += "\u2192 "; }
+                else if (ptr.x == x - 1) { gridMap += "\u2190 "; }
+                else if (ptr.y == y + 1) { gridMap += "\u2193 "; }
+                else if (ptr.y == y - 1) { gridMap += "\u2191 "; }
+                else { gridMap += "* "; }
+            }
+            gridMap += "\n";
+        }
+        Debug.Log(gridMap);
+        gridMap = ""; */
     }
-}
+
+
+
+}   
 
 
 

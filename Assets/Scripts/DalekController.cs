@@ -15,10 +15,12 @@ public class DalekController : MonoBehaviour
     public float speed = 1f;
     public float distance;
     private Vector3 targetPosition;
-    
+    private GridController _gridController;
+
     // Start is called before the first frame update
     void Start()
     {
+        _gridController = GameObject.Find("Grid").GetComponent<GridController>();
         _dalek = GetComponent<DalekController>();
         GotoNextPoint();
         
@@ -29,7 +31,8 @@ public class DalekController : MonoBehaviour
             return;
         // returns if no points have been set up
 
-        targetPosition = points[destPoint].position; // sets the titan's next point to go to
+        targetPosition = points[destPoint].position; // sets the dalek's next point to go to
+        
         destPoint = (destPoint + 1) % points.Length; // sets the next point in the array as the destination
         // cycles back to the start of the array after the last point
     }
@@ -40,6 +43,7 @@ public class DalekController : MonoBehaviour
         Vector3 currentPosition = _dalek.transform.position;
         //first, check to see if we're close enough to the target
         //targetPosition = Player.transform.position; // if uncommented, this makes the dalek just fly to the player always
+        targetPosition = _gridController.targetPos;
         distance = Vector3.Distance(currentPosition, targetPosition);
         if (distance > 0.5f)
         {
