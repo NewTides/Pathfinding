@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\DalekController.cs" />
+     <Compile Include="Assets\Scripts\GridController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Teleport.cs" />
  <Reference Include="Unity.Timeline.Editor">

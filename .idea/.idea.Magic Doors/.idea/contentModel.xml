@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="DalekController.cs" t="Include" />
+          <e p="GridController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="Teleport.cs" t="Include" />
         </e>

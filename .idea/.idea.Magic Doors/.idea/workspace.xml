@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4e21145-af9a-43dc-8dbf-80104558c4cf" name="Default Changelist" comment="" />
+    <list default="true" id="f4e21145-af9a-43dc-8dbf-80104558c4cf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Doors/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Doors/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magic Doors/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magic Doors/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -13,10 +20,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Teleport.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DalekController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GridController.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1nQizxVjeBp8dNQHmfKBsiYIHOu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,6 +78,9 @@
       <workItem from="1620938481737" duration="599000" />
       <workItem from="1620997517237" duration="943000" />
       <workItem from="1621451400266" duration="1120000" />
+      <workItem from="1621453220790" duration="1789000" />
+      <workItem from="1621455044911" duration="1786000" />
+      <workItem from="1621456858441" duration="1792000" />
     </task>
     <servers />
   </component>
@@ -81,6 +93,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2198" y="230" key="Github.ShareDialog" timestamp="1621453448608">
+      <screen x="1366" y="-185" width="1920" height="1040" />
+    </state>
+    <state x="2198" y="230" key="Github.ShareDialog/0.0.1366.728/1366.-185.1920.1040@1366.-185.1920.1040" timestamp="1621453448608" />
+    <state x="2036" y="39" key="Github.UntrackedFilesDialog" timestamp="1621453707780">
+      <screen x="1366" y="-185" width="1920" height="1040" />
+    </state>
+    <state x="2036" y="39" key="Github.UntrackedFilesDialog/0.0.1366.728/1366.-185.1920.1040@1366.-185.1920.1040" timestamp="1621453707780" />
     <state x="1982" y="142" key="run.anything.popup" timestamp="1620209132370">
       <screen x="1366" y="-185" width="1920" height="1040" />
     </state>
