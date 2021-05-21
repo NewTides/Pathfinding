@@ -22,7 +22,7 @@ public class DalekController : MonoBehaviour
     {
         _gridController = GameObject.Find("Grid").GetComponent<GridController>();
         _dalek = GetComponent<DalekController>();
-        GotoNextPoint();
+        //GotoNextPoint();
         
     }
     void GotoNextPoint()

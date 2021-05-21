@@ -56,7 +56,7 @@ public class GridController : MonoBehaviour
         var astarYPosPlayer = (int) (Player.position.z + 15) / 5;
         // Debug.Log($"Dalek A* position: x {astarXPosDalek}, y {astarYPosDalek} \n Player A* position: x {astarXPosPlayer}, y {astarYPosPlayer}");
         var nextStep = new AStarSearch(astargrid, new Location(astarXPosPlayer, astarYPosPlayer), new Location(astarXPosDalek, astarYPosDalek));
-        //Location playerLocation = new Location(astarXPosPlayer, astarYPosPlayer);
+        Location playerLocation = new Location(astarXPosPlayer, astarYPosPlayer);
         Location dalekLocation = new Location(astarXPosDalek, astarYPosDalek);
 
         Location pointer = dalekLocation;
@@ -65,13 +65,30 @@ public class GridController : MonoBehaviour
             pointer = dalekLocation;
         }
 
-        if (astargrid.walls.Contains(dalekLocation)){}
-        else if (pointer.x == astarXPosDalek + 1) {targetPos.x = (float) (pointer.x * 5 - 12.5);}
-        else if (pointer.x == astarXPosDalek - 1) {targetPos.x = (float) (pointer.x * 5 - 12.5);}
-        else if (pointer.y == astarYPosDalek + 1) {targetPos.z = (float) (pointer.y * 5 - 12.5);}
-        else if (pointer.y == astarYPosDalek - 1) {targetPos.z = (float) (pointer.y * 5 - 12.5);}
-        targetPos = new Vector3(targetPos.x, 1, targetPos.z);
-        //Debug.Log($"Dalek location: {dalekLocation.x}, {dalekLocation.y} \n pointer: {pointer.x}, {pointer.y}");
+        if (!astargrid.walls.Contains(dalekLocation))
+        {
+            if (pointer.x == astarXPosDalek + 1)
+            {
+                targetPos = new Vector3((float) (pointer.x * 5 - 12.5), 1, (float) (pointer.y * 5 - 12.5));//targetPos.x = (float) (pointer.x * 5 - 12.5);
+            }
+            else if (pointer.x == astarXPosDalek - 1)
+            {
+                targetPos = new Vector3((float) (pointer.x * 5 - 12.5), 1, (float) (pointer.y * 5 - 12.5));//targetPos.x = (float) (pointer.x * 5 - 12.5);
+            }
+            else if (pointer.y == astarYPosDalek + 1)
+            {
+                targetPos = new Vector3((float) (pointer.x * 5 - 12.5), 1, (float) (pointer.y * 5 - 12.5));//targetPos.z = (float) (pointer.y * 5 - 12.5);
+            }
+            else if (pointer.y == astarYPosDalek - 1)
+            {
+                targetPos = new Vector3((float) (pointer.x * 5 - 12.5), 1, (float) (pointer.y * 5 - 12.5));//targetPos.z = (float) (pointer.y * 5 - 12.5);
+            }
+        }
+        //despite being an else if statement, targetPos still used last frame's targetPos.x or z so it would accidentally take shortcuts through walls
+        //with this version, it can no longer move diagonally very often but it paths around obstacles correctly
+        //targetPos = new Vector3(targetPos.x, 1, targetPos.z);
+        //targetPos = new Vector3((float) (pointer.x * 5 - 12.5), 1, (float) (pointer.y * 5 - 12.5));
+        Debug.Log($"Dalek location: {dalekLocation.x}, {dalekLocation.y}, Player location: {playerLocation.x}, {playerLocation.y} \n pointer: {pointer.x}, {pointer.y}, Target position: {targetPos}");
         //Debug.Log($"Player location: {playerLocation.x}, {playerLocation.y} \n pointer: {pointer.x}, {pointer.y}");
 
         //Debug.Log($"Target position: {targetPos}");
